@@ -8,7 +8,7 @@ var tasklist = require('markdown-it-task-lists');
 var util = require('../../lib/util');
 
 var tpl = fs.readFileSync(path.join(__dirname, '../../template.html'), 'utf8');
-
+var theme = "Avenue"
 var md = require('markdown-it')({
   html: true,
   linkify: true,
@@ -27,11 +27,27 @@ plugin.functionSync('MdownPreview', preview);
 plugin.functionSync('MdownReload', renderAndRefresh);
 
 function render(content, done) {
-  return tpl.replace('$body', md.render(content));
+  return tpl.replace('$cssLink', style(theme)).replace('$body', md.render(content));
+}
+
+function style(css){
+  var baseUrl = "https://rawgit.com/ttscoff/MarkedCustomStyles/master/";
+
+  var cssUrl = encodeURI(baseUrl + css + '.css');
+  var linkElem = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + cssUrl + "\" media=\"screen\" />";
+  return linkElem;
+
+}
+
+function setTheme(args){
+  if ( args.length > 0 ){
+    return theme=args[0];
+  }
 }
 
 function renderAndRefresh(nvim, args, done) {
-  debug('render and refresh');
+  debug('render and refresh', args);
+  setTheme(args)
   util.createServer(function(err) {
     if (err) return done(err);
     markdownFromBuffer(nvim, function(err) {
@@ -42,6 +58,7 @@ function renderAndRefresh(nvim, args, done) {
 }
 
 function preview(nvim, args, done) {
+  setTheme(args)
   util.createServer(function(err) {
     if (err) return done(err);
 
@@ -60,7 +77,6 @@ function preview(nvim, args, done) {
 function markdownFromBuffer(nvim, done) {
   util.getBufferContent(nvim, function(err, content) {
     if (err) return done(err);
-
     var html = render(content);
 
     util.setHtml(html);
