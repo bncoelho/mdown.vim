@@ -1,11 +1,13 @@
 function! s:initCommands()
   command! -buffer Mpreview call s:staticPreview()
   command! -buffer Mpreviewlive call s:livePreview()
+  command! -buffer Mpreviewoff call s:clearLiveAutoCommands()
 endfunction
 
 function! s:clearLiveAutoCommands()
   au! CursorHold,CursorHoldI,CursorMoved,CursorMovedI <buffer>
   au! CursorHold,BufWrite,InsertLeave <buffer>
+  au! BufWrite,InsertLeave <buffer>
 endfunction
 
 function! s:staticPreview()
