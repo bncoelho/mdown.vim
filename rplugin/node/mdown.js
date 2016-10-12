@@ -3,6 +3,7 @@ var path = require('path');
 var md = require('markdown-it');
 var hjs = require('highlight.js');
 var got = require('got');
+var tasklist = require('markdown-it-task-checkbox')
 
 var util = require('../../lib/util');
 
@@ -20,7 +21,7 @@ var md = require('markdown-it')({
       return hljs.highlight(lang, str).value;
     } catch (__) {}
   }
-});
+}).use(tasklist);
 
 plugin.functionSync('MdownPreview', preview);
 plugin.functionSync('MdownReload', renderAndRefresh);
