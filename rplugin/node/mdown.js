@@ -3,7 +3,7 @@ var path = require('path');
 var md = require('markdown-it');
 var hjs = require('highlight.js');
 var got = require('got');
-var tasklist = require('markdown-it-task-checkbox')
+var tasklist = require('markdown-it-task-lists');
 
 var util = require('../../lib/util');
 
