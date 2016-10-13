@@ -6,7 +6,7 @@ It uses neovim's remote plugin feature to glue up together [markdown-it][],
 [tiny-lr]() and vim's markdown buffers. Most of the plugin functionality is
 implemented in node (see [./rplugin/node/mdown.js](./rplugin/node/mdown.js)).
 
-It just defines two functions and one command to render, preview and refresh
+It defines a couple of commands to preview and refresh
 markdown files from buffers.
 
 `:Mpreview` to render and open a new webpage. This command is only available
