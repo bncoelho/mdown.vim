@@ -9,7 +9,7 @@ var util = require('../../lib/util');
 
 var tpl = fs.readFileSync(path.join(__dirname, '../../template.html'), 'utf8');
 var theme = "Avenue"
-var themeRepoUrl = "https://rawgit.com/ttscoff/bncoelho/master/";
+var themeRepoUrl = "https://cdn.rawgit.com/bncoelho/MarkedCustomStyles/master/";
 
 var md = require('markdown-it')({
   html: true,
