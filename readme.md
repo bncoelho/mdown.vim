@@ -13,11 +13,17 @@ markdown files from buffers.
 within Markdown buffers.
 
 The plugin is also configured to re-render and trigger a LiveReload refresh
-while typing (see [./plugin/mdown.vim](./plugin/mdown.vim)).
+while typing with `:Mpreviewlive`.
+
+To stop updating the preview use `:Mpreviewoff`
+
+You can change the look of the preview by using any of the themes available
+[here][theme-repo] using `:Mdowntheme <theme name>`, .ie `:Mdowntheme Base16 Tomorrow`
 
 [markdown-it]: https://github.com/markdown-it/markdown-it
 [tiny-lr]: https://github.com/mklabs/tiny-lr
 [vim-plug]: https://github.com/junegunn/vim-plug
+[theme-repo]: https://github.com/bncoelho/MarkedCustomStyles
 
 ## Install
 
