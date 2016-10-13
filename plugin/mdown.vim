@@ -28,7 +28,6 @@ function! s:livePreview()
   call g:MdownPreview(g:mdown_theme)
   au! CursorHold,CursorHoldI,CursorMoved,CursorMovedI <buffer> call g:MdownReload()
   au! CursorHold,BufWrite,InsertLeave <buffer> call g:MdownReload()
-  au! BufWrite,InsertLeave <buffer> call g:MdownReload()
 endfunction
 
 autocmd! FileType markdown call s:initCommands()
