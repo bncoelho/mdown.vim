@@ -9,6 +9,8 @@ var util = require('../../lib/util');
 
 var tpl = fs.readFileSync(path.join(__dirname, '../../template.html'), 'utf8');
 var theme = "Avenue"
+var themeRepoUrl = "https://rawgit.com/ttscoff/bncoelho/master/";
+
 var md = require('markdown-it')({
   html: true,
   linkify: true,
@@ -31,12 +33,8 @@ function render(content, done) {
 }
 
 function style(css){
-  var baseUrl = "https://rawgit.com/ttscoff/MarkedCustomStyles/master/";
-
-  var cssUrl = encodeURI(baseUrl + css + '.css');
-  var linkElem = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + cssUrl + "\" media=\"screen\" />";
-  return linkElem;
-
+  var cssUrl = encodeURI(themeRepoUrl + css + '.css');
+  return "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + cssUrl + "\" media=\"screen\" />";
 }
 
 function setTheme(args){
