@@ -4,6 +4,7 @@ var md = require('markdown-it');
 var hjs = require('highlight.js');
 var got = require('got');
 var tasklist = require('markdown-it-task-lists');
+var deflists = require('markdown-it-deflist')
 
 var util = require('../../lib/util');
 
@@ -23,7 +24,7 @@ var md = require('markdown-it')({
       return hljs.highlight(lang, str).value;
     } catch (__) {}
   }
-}).use(tasklist);
+}).use(tasklist).use(deflists);
 
 plugin.functionSync('MdownPreview', preview);
 plugin.functionSync('MdownReload', renderAndRefresh);
